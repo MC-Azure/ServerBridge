@@ -9,8 +9,8 @@
         <version>${revision}</version>
     </parent>
 
-    <artifactId>common</artifactId>
-    <name>Common</name>
+    <artifactId>bukkit</artifactId>
+    <name>Bukkit</name>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
@@ -21,8 +21,23 @@
     <dependencies>
         <dependency>
             <groupId>io.github.vlouboos</groupId>
-            <artifactId>serverbridge-api</artifactId>
+            <artifactId>common</artifactId>
             <version>${revision}</version>
         </dependency>
+        <dependency>
+            <groupId>org.github.paperspigot</groupId>
+            <artifactId>paperspigot-api</artifactId>
+            <version>1.8.8-R0.1-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
+
+    <build>
+        <resources>
+            <resource>
+                <filtering>true</filtering>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
+    </build>
 </project>

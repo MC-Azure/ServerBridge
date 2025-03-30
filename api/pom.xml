@@ -4,12 +4,15 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>me.vlouboos</groupId>
-        <artifactId>ServerBridge</artifactId>
-        <version>1.1</version>
+        <groupId>io.github.vlouboos</groupId>
+        <artifactId>serverbridge</artifactId>
+        <version>1.0</version><!-- Worst Deploy -->
     </parent>
+    <description>API</description>
+    <url>https://github.com/MC-Azure/ServerBridge</url>
 
-    <artifactId>api</artifactId>
+    <artifactId>serverbridge-api</artifactId>
+    <name>API</name>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
@@ -17,4 +20,68 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>3.2.6</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.sonatype.central</groupId>
+                <artifactId>central-publishing-maven-plugin</artifactId>
+                <version>0.7.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <publishingServerId>central</publishingServerId>
+<!--                    <autoPublish>true</autoPublish>-->
+                    <checksums>required</checksums>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <licenses>
+        <license>
+            <name>BSD 4-Clause License</name>
+            <url>https://spdx.org/licenses/BSD-4-Clause.html</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>good</id>
+            <name>vlouboos</name>
+            <email>vlouyearlinjinhua@outlook.com</email>
+            <roles>
+                <role>Project Owner</role>
+            </roles>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git://github.com/MC-Azure/ServerBridge.git</connection>
+        <developerConnection>scm:git:ssh://github.com:MC-Azure/ServerBridge.git</developerConnection>
+        <url>https://github.com/MC-Azure/ServerBridge/tree/master</url>
+    </scm>
 </project>

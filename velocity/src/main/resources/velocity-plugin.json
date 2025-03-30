@@ -1,0 +1,10 @@
+{
+  "id": "serverbridge",
+  "name": "ServerBridge",
+  "version": "${project.version}",
+  "authors": [
+    "vlouboos"
+  ],
+  "dependencies": [],
+  "main": "io.github.vlouboos.serverbridge.velocity.VelocityMain"
+}

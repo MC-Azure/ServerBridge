@@ -4,12 +4,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>me.vlouboos</groupId>
-        <artifactId>ServerBridge</artifactId>
-        <version>1.1</version>
+        <groupId>io.github.vlouboos</groupId>
+        <artifactId>serverbridge</artifactId>
+        <version>${revision}</version>
     </parent>
 
     <artifactId>plugin</artifactId>
+    <name>Plugin</name>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
@@ -19,19 +20,19 @@
 
     <dependencies>
         <dependency>
-            <groupId>me.vlouboos</groupId>
-            <artifactId>Bukkit</artifactId>
-            <version>1.1</version>
+            <groupId>io.github.vlouboos</groupId>
+            <artifactId>bukkit</artifactId>
+            <version>${revision}</version>
         </dependency>
         <dependency>
-            <groupId>me.vlouboos</groupId>
-            <artifactId>Bungee</artifactId>
-            <version>1.1</version>
+            <groupId>io.github.vlouboos</groupId>
+            <artifactId>bungee</artifactId>
+            <version>${revision}</version>
         </dependency>
         <dependency>
-            <groupId>me.vlouboos</groupId>
-            <artifactId>Velocity</artifactId>
-            <version>1.1</version>
+            <groupId>io.github.vlouboos</groupId>
+            <artifactId>velocity</artifactId>
+            <version>${revision}</version>
         </dependency>
     </dependencies>
 
@@ -48,12 +49,39 @@
                             <goal>shade</goal>
                         </goals>
                         <configuration>
-                            <outputFile>${project.parent.build.directory}/${project.parent.name}-${project.version}.jar</outputFile>
+                            <outputFile>
+                                ${project.parent.build.directory}/${project.parent.name}-${project.version}.jar
+                            </outputFile>
+                            <filters>
+                                <filter>
+                                    <artifact>*:*</artifact>
+                                    <excludes>
+                                        <exclude>**/*.MF</exclude>
+                                    </excludes>
+                                </filter>
+                            </filters>
+                            <relocations>
+                                <relocation>
+                                    <pattern>com.</pattern>
+                                    <shadedPattern>io.github.vlouboos.serverbridge.shaded.com.</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>org.</pattern>
+                                    <shadedPattern>io.github.vlouboos.serverbridge.shaded.org.</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>redis.</pattern>
+                                    <shadedPattern>io.github.vlouboos.serverbridge.shaded.redis.</shadedPattern>
+                                </relocation>
+                            </relocations>
+                            <transformers>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ApacheLicenseResourceTransformer">
+                                </transformer>
+                            </transformers>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
         </plugins>
     </build>
-
 </project>

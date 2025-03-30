@@ -1,0 +1,4 @@
+name: ServerBridge
+main: me.vlouboos.serverbridge.bungee.BungeeMain
+version: '${project.version}'
+author: vlouboos

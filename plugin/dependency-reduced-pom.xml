@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <parent>
-    <artifactId>ServerBridge</artifactId>
-    <groupId>me.vlouboos</groupId>
-    <version>1.1</version>
+    <artifactId>serverbridge</artifactId>
+    <groupId>io.github.vlouboos</groupId>
+    <version>${revision}</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <artifactId>plugin</artifactId>
+  <name>Plugin</name>
   <build>
     <plugins>
       <plugin>
@@ -20,12 +21,51 @@
             </goals>
             <configuration>
               <outputFile>${project.parent.build.directory}/${project.parent.name}-${project.version}.jar</outputFile>
+              <filters>
+                <filter>
+                  <artifact>*:*</artifact>
+                  <excludes>
+                    <exclude>**/*.MF</exclude>
+                  </excludes>
+                </filter>
+              </filters>
+              <relocations>
+                <relocation>
+                  <pattern>com.</pattern>
+                  <shadedPattern>io.github.vlouboos.serverbridge.shaded.com.</shadedPattern>
+                </relocation>
+                <relocation>
+                  <pattern>org.</pattern>
+                  <shadedPattern>io.github.vlouboos.serverbridge.shaded.org.</shadedPattern>
+                </relocation>
+                <relocation>
+                  <pattern>redis.</pattern>
+                  <shadedPattern>io.github.vlouboos.serverbridge.shaded.redis.</shadedPattern>
+                </relocation>
+              </relocations>
+              <transformers>
+                <transformer />
+              </transformers>
             </configuration>
           </execution>
         </executions>
       </plugin>
     </plugins>
   </build>
+  <dependencies>
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>1.18.36</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jetbrains</groupId>
+      <artifactId>annotations</artifactId>
+      <version>26.0.1</version>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
   <properties>
     <maven.compiler.target>8</maven.compiler.target>
     <maven.compiler.source>8</maven.compiler.source>
