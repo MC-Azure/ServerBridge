@@ -2,7 +2,7 @@
 
 子服交流
 
-**ServerBridge** is a [Bukkit](https://bukkit.org/) plugin which serves as a communicator for different servers that are
+**ServerBridge** is a plugin for [Bukkit](https://bukkit.org/), [Spigot](https://www.spigotmc.org/), [Paper](https://papermc.io/software/paper), [Bungeecord](https://www.spigotmc.org/), [Waterfall](https://papermc.io/software/waterfall) as well as [Velocity](https://papermc.io/software/velocity), which serves as a communicator for different servers that are
 even not connected to one Proxy.
 
 **子服交流**是一款实现让即使不连接到一个代理的服务器交流的插件。
