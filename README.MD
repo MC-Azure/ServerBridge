@@ -29,7 +29,7 @@ If you're using Maven, simply add this to the `dependencies` section of your POM
     <dependency>
         <group>io.github.vlouboos</group>
         <artifactId>serverbridge-api</artifactId>
-        <version>1.0</version>
+        <version>1.1</version>
         <scope>provided</scope>
     </dependency>
     ...
@@ -48,7 +48,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly 'io.github.vlouboos:serverbridge-api:1.0'
+    compileOnly 'io.github.vlouboos:serverbridge-api:1.1'
 }
 ```
 
@@ -60,7 +60,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly("io.github.vlouboos:serverbridge-api:1.0")
+    compileOnly("io.github.vlouboos:serverbridge-api:1.1")
 }
 ```
 
